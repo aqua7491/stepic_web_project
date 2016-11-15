@@ -36,8 +36,8 @@ def popular(request):
 
 def question_detail(request, pk):
 	question = get_object_or_404(Question, id=pk)
-#    answers = question.answer_set.all()
-	answers = Answer.objects.filter(question_id__exact=int(id))
+	answers = question.answer_set.all()
+#	answers = Answer.objects.filter(question_id__exact=int(pk))
 	return render(request, 'detail.html', {
 		'question': question,
 		'answers': answers,})

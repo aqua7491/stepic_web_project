@@ -1,0 +1,10 @@
+
+{% block title %}Question - {{ question.id }}{% endblock %}
+
+{% block content %}
+    <h3 >{{ question.title }}</h3>
+    <p>{{ question.text }}</p>
+    {% for a in answers %}
+        <li>{{ a.text }}</li>
+    {% endfor %}
+{% endblock %}
