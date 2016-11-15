@@ -1,9 +1,15 @@
-{% extends "list.html" %}
+<!DOCTYPE html>
+<body>
+{% block title %} Stepic question list {% endblock %}
 
-{% block title %}Popular // Ask Pupkin{% endblock %}
-
+{% block content %}
 {% block question_view_title %}<h1>Popular Questions</h1>{% endblock %}
+  {% for question in questions %}
+    {% block question_title %}
+      <h2>{{ question.title }} ({{ question.rating }})</h2>
+    {% endblock %}
+  {% endfor %}
 
-{% block question_title %}
-  <h2>{{ question.title }} ({{ question.rating }})</h2>
+  {% include "pagination.html" %}
 {% endblock %}
+</body>

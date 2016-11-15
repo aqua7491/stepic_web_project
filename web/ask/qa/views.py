@@ -25,7 +25,7 @@ def popular(request):
     #Pagination
 	page, paginator = paginate(request, Question.objects.populr())
     #Update baseurl
-#    paginator.baseurl = reverse('popular') + '?page='
+	paginator.baseurl = reverse('popular') + '?page='
     #Return answer
 	return render(request, 'list_rating.html', {
 		'questions': page.object_list,
