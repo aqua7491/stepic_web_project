@@ -5,12 +5,12 @@ from qa.views import test, question_list, question_detail, popular
 
 urlpatterns = [
     url(r'^$', question_list, name='question_list'),
-    url(r'^popular/$', popular, name='popular'),
-    url(r'^question/(?P<pk>\d+)/$', question_detail, name='question_detail')
-    url(r'^login/$', test, name='test'),
-    url(r'^signup/$', test,name='test'),
+    url(r'^popular/', popular, name='popular'),
+    url(r'^question/(?P<pk>\d+)', question_detail, name='question_detail')
+    url(r'^login/', test, name='test'),
+    url(r'^signup/', test,name='test'),
     url(r'^ask/.*$', test,name='test'),
-    url(r'^new/$', test,name='test'),
+    url(r'^new/', test,name='test'),
 ]
 
 

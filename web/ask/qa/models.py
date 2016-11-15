@@ -1,11 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator, EmptyPage
-
-class QuestionManager(models.Manager):                                          
+from django.core.urlresolvers import reverse
+class QuestionManager(models.Manager):                        
     def new(self):                                                              
         return self.order_by('-added_at')                                                                
-    def popular():                                                          
+    def populr(self):                                                          
         return self.order_by('-rating')
 
 class Question(models.Model):
@@ -21,7 +21,7 @@ class Question(models.Model):
 		return self.title
 
 	def get_absolute_url(self):
-		return reverse('question_detail', kwargs={'pk': self.pk})
+		return reverse('question', kwargs={'id': self.id})
 
 #	class Meta:
 #	    ordering = ('-added_at',)
@@ -32,7 +32,9 @@ class Answer(models.Model):
 	added_at = models.DateField(auto_now_add=True)
 	question = models.ForeignKey(Question)
 	author = models.ForeignKey(User)
-
+	
+	def __str__(self):
+		return self.text
 #	class Meta:
 #       ordering = ('added_at',)
 
@@ -57,4 +59,4 @@ def paginate(request, qs):
 		page = paginator.page(page)
 	except EmptyPage:
 		page = paginator.page(paginator.num_pages)
-		return page, paginator
+	return page, paginator

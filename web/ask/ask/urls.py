@@ -4,5 +4,13 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-	url(r'^', include('qa.urls')))
-
+#	url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', 'qa.views.question_list', name='question_list'),
+    url(r'^login/', 'qa.views.test'),
+    url(r'^signup', 'qa.views.test'),
+    url(r'^question/(?P<id>\d+)', 'qa.views.question_detail', name='question_detail'),
+    url(r'^ask/', 'qa.views.ask', name='ask'),
+    url(r'^popular/', 'qa.views.popular', name='popular'),
+    url(r'^new', 'qa.views.test'),
+    url(r'^answer/$', 'qa.views.answer', name='answer'),
+)
