@@ -7,4 +7,19 @@
     {% for a in answers %}
         <li>{{ a.text }}</li>
     {% endfor %}
+
+ {% block question_ask %}
+    <h1>Your answer:</h1>
+    <div class="form">
+      <form method="post" action="/answer/">
+        {% csrf_token %}
+          {% for field in form %}
+             <div class="form-field">
+               {{ field }}
+             </div>
+          {% endfor %}
+        <button type="submit" class="btn">Add answer</button>
+      </form>
+    </div>
+  {%endblock%}
 {% endblock %}
